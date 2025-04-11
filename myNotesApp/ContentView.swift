@@ -15,7 +15,7 @@ struct ContentView: View {
         
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.white, .pink]),
+                LinearGradient(gradient: Gradient(colors: [Color.pink.opacity(0.8), Color.blue.opacity(0.8)]),
                                startPoint: .top,
                                endPoint: .bottom)
                 .ignoresSafeArea()
@@ -60,7 +60,7 @@ struct AnimationTitleView: View {
                 Text(String(title[title.index(title.startIndex, offsetBy: index)]))
                     .font(.system(size: 70)).bold()
                     .opacity(show ? 1 : 0)
-                    .foregroundColor(.pink)
+                    .foregroundColor(.white)
                     .offset(y: show ? -30 : 0)
                     .animation(animationType.delay(Double(index) * delay + initialDelay), value: show)
                     .foregroundStyle(color)

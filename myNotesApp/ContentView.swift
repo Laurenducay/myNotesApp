@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
     @State var show = false
@@ -32,7 +33,7 @@ struct ContentView: View {
                 AnimationTitleView(title: title, color: .pink.opacity(0.8), initialDelay: initialDelays[0], animationType: .spring)
                 
                 VStack {
-                    Button(action: {enterButton()}){
+                    Button(action: {show = true}){
                         HStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.white.opacity(0.3))
@@ -40,17 +41,21 @@ struct ContentView: View {
                         }
                         
                     }
-                    .offset(y: 200)
-
+                    NavigationLink(destination: myNotesView(), isActive: $show){
+                        EmptyView()
+                    }
                 }
+                .offset(y: 200)
             }
         }
     }
 }
 
-func enterButton() {
-    debugPrint("entering the note sheet")
-}
+//func enterButton() {
+//    
+//    debugPrint("entering the note sheet")
+//}
+
 
 struct AnimationTitleView: View {
     let title: String

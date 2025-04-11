@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct myNotesView: View {
+    @Environment(\.dismiss) var dismiss
     @State private var isShowingNoteSheet = false
     var body: some View {
         ScrollView {
@@ -26,6 +27,14 @@ struct myNotesView: View {
                     }
                     .foregroundColor(.white)
                 }
+            Button(action: {
+                dismiss()
+            }) {
+                Image(systemName: "chevron.left")
+                    .foregroundStyle(.black)
+                    .padding(8)
+                    .offset(x: -170, y: -50)
+            }
         }
         .ignoresSafeArea(.all)
         .overlay(

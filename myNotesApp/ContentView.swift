@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
     @State var show = false
@@ -30,10 +31,31 @@ struct ContentView: View {
                 }
                 
                 AnimationTitleView(title: title, color: .pink.opacity(0.8), initialDelay: initialDelays[0], animationType: .spring)
+                
+                VStack {
+                    Button(action: {show = true}){
+                        HStack {
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(Color.white.opacity(0.3))
+                                .frame(width: 200, height: 50)
+                        }
+                        
+                    }
+                    NavigationLink(destination: myNotesView(), isActive: $show){
+                        EmptyView()
+                    }
+                }
+                .offset(y: 200)
             }
         }
     }
 }
+
+//func enterButton() {
+//    
+//    debugPrint("entering the note sheet")
+//}
+
 
 struct AnimationTitleView: View {
     let title: String
@@ -84,4 +106,12 @@ struct AnimationTitleView: View {
 #Preview {
     ContentView()
 }
+
+//                        Image(systemName: "plus")
+//                            .padding()
+//                            .background(Color.pink.opacity(0.2))
+//                            .foregroundColor(.white)
+//                            .frame(width: 50, height: 50)
+//                            .clipShape(Circle())
+//                            .shadow(color: Color.blue, radius: 5)
 

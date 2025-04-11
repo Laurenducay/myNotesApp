@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct myNotesView: View {
+    @State private var isShowingNoteSheet = false
     var body: some View {
         ScrollView {
             myTopBar()
@@ -27,6 +28,20 @@ struct myNotesView: View {
                 }
         }
         .ignoresSafeArea(.all)
+        .overlay(
+            HStack {
+                Button(action: {addNote()}){
+                    Image(systemName: "plus")
+                        .padding()
+                        .background(Color.pink.opacity(0.2))
+                        .foregroundColor(.white)
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                        .shadow(color: Color.blue, radius: 5)
+                }
+            }
+            .padding(), alignment: .bottomTrailing
+        )
     }
 }
 
@@ -43,6 +58,10 @@ struct myTopBar: View {
                 }
         }
     }
+}
+
+func addNote() {
+    debugPrint(">>> Add Note <<<")
 }
 
 struct myNotesView_Previews: PreviewProvider {
